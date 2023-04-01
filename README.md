@@ -1,7 +1,7 @@
 # ScentStation
 A Sample N-layered .NET Core Project Demonstrating Clean Architecture and the Generic Repository Pattern.
 
-## Pacages
+## Packages
 
 ### ApplicationCore
 ```
