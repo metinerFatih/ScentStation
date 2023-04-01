@@ -7,8 +7,7 @@ A Sample N-layered .NET Core Project Demonstrating Clean Architecture and the Ge
 ```
 Install-Package Ardalis.Specification -v 6.1.0
 ```
-#### ASD
-##### ASD
+
 ### Infrastructure
 ```
 Install-Package Microsoft.EntityFrameworkCore -v 6.0.15
