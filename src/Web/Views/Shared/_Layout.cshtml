@@ -33,14 +33,7 @@
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Basket" asp-action="Index">
-                                Basket
-                                <span class="badge bg-success" data-total-items>0</span>
-                            </a>
-                        </li>
-                    </ul>
+                    <vc:basket-nav-bar />
                 </div>
             </div>
         </nav>
