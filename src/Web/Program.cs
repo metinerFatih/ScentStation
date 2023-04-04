@@ -2,11 +2,13 @@ global using ApplicationCore.Interfaces;
 global using Infrastructure.Identity;
 global using ApplicationCore.Entities;
 global using Web.Models;
+global using Web.Extensions;
+global using Web.Interfaces;
 using Infrastructure.Data;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Web.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Web.Services;
+using ApplicationCore.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,10 +23,15 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
 
 builder.Services.AddScoped<IHomeViewModelService, HomeViewModelService>();
 
+builder.Services.AddScoped<IBasketService, BasketService>();
+
+builder.Services.AddScoped<IBasketViewModelService, BasketViewModelService>();
+
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AppIdentityDbContext>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor(); //httpcontext eriþim için.
 
 var app = builder.Build();
 
