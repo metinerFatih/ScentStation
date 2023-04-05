@@ -27,7 +27,7 @@ namespace ApplicationCore.Services
             var basket = await GetOrCreateBasketAsync(buyerId);
             var basketItem = basket.BasketItems.FirstOrDefault(x => x.ProductId == productId);
 
-            if(basketItem == null)
+            if (basketItem == null)
             {
                 basketItem = new BasketItem()
                 {
@@ -108,11 +108,11 @@ namespace ApplicationCore.Services
 
             var destinationBasket = await GetOrCreateBasketAsync(destinationBuyerId);
 
-            foreach(var item in sourceBasket.BasketItems)
+            foreach (var item in sourceBasket.BasketItems)
             {
                 var targetItem = destinationBasket.BasketItems.FirstOrDefault(x => x.ProductId == item.ProductId);
 
-                if(targetItem == null)
+                if (targetItem == null)
                 {
                     destinationBasket.BasketItems.Add(new BasketItem()
                     {
@@ -124,10 +124,9 @@ namespace ApplicationCore.Services
                 {
                     targetItem.Quantity += item.Quantity;
                 }
-
-                await _basketRepo.UpdateAsync(destinationBasket);
-                await _basketRepo.DeleteAsync(sourceBasket);
             }
+            await _basketRepo.UpdateAsync(destinationBasket);
+            await _basketRepo.DeleteAsync(sourceBasket);
         }
     }
 }

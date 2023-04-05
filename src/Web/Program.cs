@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Web.Services;
 using ApplicationCore.Services;
+using Web.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseTransferBasket(); // kendi yazdýðýmýz middleware
 
 app.MapControllerRoute(
     name: "default",
